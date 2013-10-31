@@ -1,0 +1,114 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	
+	<link rel="stylesheet" type="text/css" media="all" href="css/fancy.css" />
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+	<script type="text/javascript" src="jquery.js"></script>
+	
+	<title>Product Details</title>
+	
+	
+     <script>
+     	$(document).ready(function(){
+     	
+     	var location;
+     	var location1;
+     	
+			$.ajax({
+				type: "GET",
+				url: "http://absindstaging.mine.nu/phonegap/product.xml?id='123456'",
+				dataType: "xml",
+				success: function(xml) {
+				var location;
+					$(xml).find('product').each(function(){
+					var id = $(this).attr('id');
+						//var title = $(this).find('title').text();
+						//var url = $(this).find('url').text();
+						$('<div class="items" id="link_'+id+'"></div>').html('Product Description').appendTo('#page-wrap');
+						$(this).find('product_desc').each(function(){
+							var product_name = $(this).find('product_name').text();
+							var farm = $(this).find('farm').text();
+							location = $(this).find('location').text();
+							var harvest_date = $(this).find('harvest_date').text();
+							$('<div class="product_name"></div>').html(product_name).appendTo('#head');
+							$('<div class="farm"></div>').html('<b>Farm Name</b>: '+farm).appendTo('#prodesc');
+							$('<div class="location"></div>').html('<input type="hidden" id="loc1" value="hi"/><b>Farm Location</b>: <a href="location.html" id="foo" onclick="doalert(); return false;">'+location+'<img src="mapicon.png" height="23px" width="20px"/></a>').appendTo('#prodesc');
+							$('<div class="harvest_date"></div>').html('<b>Harvest Date</b>: '+harvest_date).appendTo('#prodesc');
+							
+							document.getElementById("loc1").value=location;
+							document.getElementById("txtName").value=location;
+							
+							
+							
+							
+							
+						});
+						$(this).find('store_desc').each(function(){
+							var store_name = $(this).find('store_name').text();
+							location1 = $(this).find('location').text();
+							var con = $(this).find('con').text();
+							$('<div class="store_name"></div>').html('<b>Store Name</b>: '+store_name).appendTo('#storedesc');
+							$('<div class="location1"></div>').html('<b>Store Location</b>:<a href="location.html" onclick="doalert1(); return false;"> '+location1+'<img src="mapicon.png" height="23px" width="20px"/></a>').appendTo('#storedesc');
+							$('<div class="con"></div>').html('<b>Contact Number</b>: '+con).appendTo('#storedesc');
+							document.getElementById("txtName1").value=location1;
+						});
+						
+					});
+				}
+			});
+			
+		});
+            
+     </script>
+     
+    
+	 </head>
+<body>
+
+     	<h1><div id="head"></div></h1>
+     	<div id="prodesc"><h3>Product Description</h3>
+     	
+     	</div> 
+     	
+     	<input type="Hidden" id="txtName" name="Name" value="kik"/>
+<input type="Hidden" id="ddlTechnolgy" name="Technology" value="hi"/>
+
+ <script>
+    function doalert() {
+        var url = "location.html?name=" + encodeURIComponent($("#txtName").val()) + "&technology=" + encodeURIComponent($("#ddlTechnolgy").val());
+            window.location.href = url;
+    }
+</script>
+
+     	<br><br>
+     	<div id="storedesc"><h3>Store Description</h3>
+     	</div>
+     	
+     	<div id="welcomeDiv"  style="display:none;" class="answer_list" > WELCOME</div>
+<!--<input type="button" name="answer" value="Show Div" onclick="showDiv()" />-->
+
+<input type="Hidden" id="txtName1" name="Name" value="kik"/>
+<input type="Hidden" id="ddlTechnolgy1" name="Technology" value="hi"/>
+
+<script>
+    function doalert1() {
+         var url = "location.html?name=" + encodeURIComponent($("#txtName1").val()) + "&technology=" + encodeURIComponent($("#ddlTechnolgy1").val());
+            window.location.href = url;
+    }
+</script>
+
+
+<!--<script type="text/javascript">
+    $(function () {
+        $("#btnQueryString1").bind("click", function () {
+            var url = "location.html?name=" + encodeURIComponent($("#txtName1").val()) + "&technology=" + encodeURIComponent($("#ddlTechnolgy1").val());
+            window.location.href = url;
+        });
+    });
+</script>-->
+
+     
+</body>
+</html>

@@ -1,0 +1,95 @@
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one
+ * or more contributor license agreements.  See the NOTICE file
+ * distributed with this work for additional information
+ * regarding copyright ownership.  The ASF licenses this file
+ * to you under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied.  See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
+ */
+* {
+    -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
+    -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
+    -webkit-tap-highlight-color: rgba(0,0,0,0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */
+    -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
+}
+
+body {
+    background-attachment: fixed;
+    background-color: #E4E4E4;
+    font-family: 'HelveticaNeue-Light','HelveticaNeue',Helvetica,Arial,sans-serif;
+    font-size: 30px;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    text-align:center;
+}
+.app {
+    background: url("../img/") no-repeat scroll center top rgba(0, 0, 0, 0);
+    height: 50px;
+    left: 40%;
+    margin: -115px 0 0 -112px;
+    padding: 180px 0 0;
+    position: absolute;
+    top: 35%;
+    width: 225px;
+}
+@media screen and (min-aspect-ratio: 1/1) and (min-width: 400px) {
+.app {
+    background-position: center center;
+    margin: -100px 0 0 -198px;
+    padding: 30px 0 40px 120px;
+}
+}
+h1 {
+    font-size: 24px;
+    font-weight: normal;
+    margin: 0;
+    overflow: visible;
+    padding: 0;
+    text-align: left;
+}
+.event {
+    border-radius: 4px 4px 4px 4px;
+    color: #FFFFFF;
+    font-size: 12px;
+    margin: 0 30px;
+    padding: 2px 0;
+}
+.event.listening {
+    background-color: #333333;
+    display: block;
+}
+.event.received {
+    background-color: #4B946A;
+    display: none;
+}
+@-moz-keyframes fade {
+0% {
+    opacity: 1;
+}
+50% {
+    opacity: 0.4;
+}
+100% {
+    opacity: 1;
+}
+}
+.blink {
+    animation: 3000ms ease 0s normal none infinite fade;
+}
+.Large {
+    font-size: 10pt;
+    height: 25px !important;
+    width: 220px !important;
+}
